@@ -39,8 +39,11 @@
     <main>
         <div class="main-top">
             <div class="container">
-                <form class="shorten-form">
-                    <input type="text" placeholder="Shorten a link here..." id="link">
+                <form class="shorten-form" id="shorten-form">
+                    <div class="input-and-error">
+                        <input type="text" placeholder="Shorten a link here..." id="link">
+                        <em class="hide" id="error-msg">Please enter a valid email</em>
+                    </div>
                     <button type="submit" id="btn-shorten">Shorten it!</button>
                 </form>
                 <div class="short-url-container"></div>
@@ -110,5 +113,6 @@
             </ul>
         </div>
     </footer>
+<script src="scripts.js"></script>
 </body>
 </html>

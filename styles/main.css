@@ -59,6 +59,14 @@ p {
   color: #9e9aa7;
 }
 
+.hide {
+  visibility: hidden;
+}
+
+.red-border {
+  border-color: #f46262;
+}
+
 header .top-bar {
   background: white;
   height: 120px;
@@ -189,34 +197,44 @@ main .main-top .container form button:hover {
   cursor: pointer;
 }
 
-main .main-top .container form input {
-  padding-left: 33px;
+main .main-top .container form .input-and-error {
   width: 100%;
+}
+
+main .main-top .container form .input-and-error input {
+  width: 100%;
+  padding-left: 33px;
   font-size: 24px;
+  border-style: solid;
+  border-width: 2px;
 }
 
-main .main-top .container form input::-webkit-input-placeholder {
+main .main-top .container form .input-and-error input::-webkit-input-placeholder {
   font-family: inherit;
   color: #9e9aa7;
   font-size: 20px;
 }
 
-main .main-top .container form input:-ms-input-placeholder {
+main .main-top .container form .input-and-error input:-ms-input-placeholder {
   font-family: inherit;
   color: #9e9aa7;
   font-size: 20px;
 }
 
-main .main-top .container form input::-ms-input-placeholder {
+main .main-top .container form .input-and-error input::-ms-input-placeholder {
   font-family: inherit;
   color: #9e9aa7;
   font-size: 20px;
 }
 
-main .main-top .container form input::placeholder {
+main .main-top .container form .input-and-error input::placeholder {
   font-family: inherit;
   color: #9e9aa7;
   font-size: 20px;
+}
+
+main .main-top .container form .input-and-error em {
+  color: #f46262;
 }
 
 main .main-top .container .short-url-container {
