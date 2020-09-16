@@ -40,8 +40,7 @@ ul {
 
 .logo {
   width: 120px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  height: 33px;
 }
 
 .link-cyan {
@@ -50,6 +49,10 @@ ul {
   padding: 0.5rem 1rem;
   border-radius: 50px;
   font-weight: bold;
+}
+
+.link-cyan:hover {
+  background-color: #9ce3e2;
 }
 
 p {
@@ -77,6 +80,10 @@ header .top-bar .container a {
   font-weight: bold;
 }
 
+header .top-bar .container a:hover {
+  color: black;
+}
+
 header .top-bar .container img {
   margin-right: 30px;
 }
@@ -101,11 +108,14 @@ header .top-bar .container .login-signup .link-cyan {
 
 header section {
   height: 680px;
+  background-image: url("/images/illustration-working.svg");
+  background-repeat: no-repeat;
+  background-position: calc(100% + 125px) center;
 }
 
 header section .hero-text {
   padding-top: 120px;
-  max-width: 700px;
+  max-width: 650px;
 }
 
 header section .hero-text h1 {
@@ -125,8 +135,8 @@ header section .hero-text .link-cyan {
 }
 
 main .main-top {
-  background-color: #f2f2f3;
-  height: 910px;
+  background-color: #eff0f5;
+  min-height: 910px;
 }
 
 main .main-top .container {
@@ -150,7 +160,7 @@ main .main-top .container form {
   width: 100%;
   height: 170px;
   margin-top: -85px;
-  margin-bottom: 120px;
+  margin-bottom: 20px;
   padding: 52px 64px;
   border-radius: 12px;
   display: -webkit-box;
@@ -172,6 +182,11 @@ main .main-top .container form button {
   font-weight: bold;
   font-size: 16px;
   margin-left: 24px;
+}
+
+main .main-top .container form button:hover {
+  background-color: #9ce3e2;
+  cursor: pointer;
 }
 
 main .main-top .container form input {
@@ -204,6 +219,10 @@ main .main-top .container form input::placeholder {
   font-size: 20px;
 }
 
+main .main-top .container .short-url-container {
+  margin-bottom: 100px;
+}
+
 main .main-top .container section.container-small {
   text-align: center;
 }
@@ -216,14 +235,43 @@ main .main-top .container .cards {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-top: 100px;
 }
 
 main .main-top .container .cards .card {
+  position: relative;
   width: 350px;
   height: 270px;
   background-color: white;
   padding: 0 30px 40px 30px;
   border-radius: 12px;
+}
+
+main .main-top .container .cards .card:nth-child(2) {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 45px;
+}
+
+main .main-top .container .cards .card:nth-child(2)::before, main .main-top .container .cards .card:nth-child(2)::after {
+  content: "";
+  width: 30px;
+  height: 8px;
+  background-color: #2acfcf;
+  position: absolute;
+  top: 105px;
+}
+
+main .main-top .container .cards .card:nth-child(2)::before {
+  left: -30px;
+}
+
+main .main-top .container .cards .card:nth-child(2)::after {
+  right: -30px;
+}
+
+main .main-top .container .cards .card:nth-child(3) {
+  margin-top: 90px;
 }
 
 main .main-top .container .cards .card h3 {
@@ -280,10 +328,67 @@ main .cta .container-small h2 {
   margin-top: 0;
   margin-bottom: 25px;
   color: white;
-  font-size: 32px;
+  font-size: 40px;
 }
 
 main .cta .container-small .link-cyan {
   padding: 0.7rem 2.5rem;
+}
+
+footer {
+  background-color: #232127;
+  height: 310px;
+}
+
+footer .container {
+  height: 100%;
+  padding-top: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+}
+
+footer .container img {
+  margin-right: 165px;
+}
+
+footer .container ul {
+  margin-top: 0;
+}
+
+footer .container ul li {
+  padding: 5px 0;
+}
+
+footer .container h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+footer .container a {
+  font-size: 18px;
+  color: #9e9aa7;
+}
+
+footer .container a:hover {
+  color: #2acfcf;
+}
+
+footer .container .social li {
+  display: inline;
+  padding: 0 10px;
+}
+
+footer .container .social li a {
+  color: white;
+  font-size: 1.5rem;
+}
+
+footer .container .social li a:hover {
+  color: #2acfcf;
 }
 /*# sourceMappingURL=main.css.map */
