@@ -373,7 +373,7 @@ main {
                 margin-bottom: 100px;
                 width: 100%;
                 .url-result {
-                    height: 72px;
+                    min-height: 72px;
                     width: 100%;
                     background-color: white;
                     margin-bottom: 15px;
@@ -382,26 +382,43 @@ main {
                     align-items: center;
                     padding-left: 33px;
                     padding-right: 25px;
+                    @include mobile2 {
+                        flex-direction: column;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                    }
                     .full-url {
                         text-overflow: ellipsis;
                         overflow: hidden;
                         white-space: nowrap;
                         max-width: 60%;
+                        @include mobile2 {
+                            margin-bottom: 10px;
+                            max-width: 100%;
+                            text-decoration: underline;
+                        }
                     }
                     .short-url {
                         margin-left: auto;
+                        @include mobile2 {
+                            margin: 0 0 10px 0;
+                        }
                         margin-right: 25px;
                         color: color(cyan);
                     }
                     button {
                         height: 40px;
                         width: 100px;
+                        @include mobile2 {
+                            width: 100%;
+                        }
                         background-color: color(cyan);
                         border-radius: 6px;
                         border-style: none;
                         font-family: inherit;
                         color: white;
                         font-weight: bold;
+                        font-size: 16px;
                         cursor: pointer;
                             &:hover {
                                 background-color: color(lightCyan);
