@@ -117,7 +117,67 @@ p {
     border-color: color(red);
 }
 
+.burger-toggle {
 
+    .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .line2 {
+        opacity: 0;
+    }
+
+    .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.mobile-nav {
+    @include over-mobile2 {
+        visibility: hidden;
+    }
+    position: absolute;
+    z-index: 10;
+    width: 90%;
+    left: 5%;
+    top: 0;
+    background-color: color(darkViolet);
+    border-radius: 12px;
+    height: 450px;
+    text-align: center;
+    hr {
+        width: 90%;
+        color: color(gray);
+    }
+    ul {
+        padding: 0;
+        li {
+            padding: 20px 0;
+        }
+    }
+    a {
+        font-family: inherit;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .link-cyan {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+}
+
+.nondisplay {
+    display: none;
+}
+
+.displayflex {
+    display: flex;
+}
 
 /////
 
@@ -191,12 +251,19 @@ header {
             align-items: flex-end;
             height: 840px;
         }
+        .container {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            pointer-events: none;
+        }
         .hero-text {
             padding-top: 120px;
             max-width: 650px;
             @include mobile {
                 margin-bottom: 180px;
-                text-align: center;
+                text-align: center; 
             }
             h1 {
                 margin: 0;
@@ -252,6 +319,7 @@ main {
                 display: flex;
                 @include mobile2 {
                     flex-direction: column;
+                    justify-content: space-between;
                 }
                 input, button {
                     height: 64px;
@@ -295,6 +363,9 @@ main {
                     }
                     em {
                         color: color(red);
+                        @include mobile2 {
+                            font-size: 0.7rem;
+                        }
                     }
                 }
             }
@@ -331,6 +402,10 @@ main {
                         font-family: inherit;
                         color: white;
                         font-weight: bold;
+                        cursor: pointer;
+                            &:hover {
+                                background-color: color(lightCyan);
+                            }
                     }
                 }
             }

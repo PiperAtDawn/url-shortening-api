@@ -4,7 +4,8 @@ const errorMsg = document.getElementById('error-msg')
 const form = document.getElementById('shorten-form')
 const URL_API = 'https://rel.ink/api/links/'
 const URLContainer = document.getElementById('short-url-container')
-var resultNum = 0
+const burger = document.getElementById('burger');
+const navMenu = document.getElementById('nav-menu')
 
 //Eventlisteners
 
@@ -18,6 +19,11 @@ form.addEventListener('submit', async (e) => {
         link.value = '';
     };
 });
+
+burger.addEventListener('click', () => {
+    burger.classList.toggle("burger-toggle");
+    navMenu.classList.toggle("hide");
+})
 
 //Functions
 
@@ -39,7 +45,8 @@ function is_url(str)
 function validateLink(lnk) {
     if (lnk === '') {
         errorMsg.textContent = "Please add a link";
-        errorMsg.classList.remove("hide");
+        errorMsg.classList.remove("nondisplay");
+        errorMsg.classList.add("displayflex");
         link.classList.add("red-border");
         return false;
     }
@@ -47,12 +54,14 @@ function validateLink(lnk) {
         if (!is_url(lnk))
             {
                 errorMsg.textContent = "Please add a valid link";
-                errorMsg.classList.remove("hide");
+                errorMsg.classList.remove("nondisplay");
+                errorMsg.classList.add("displayflex");
                 link.classList.add("red-border");
                 return false;
             }
             else {
-                errorMsg.classList.add("hide");
+                errorMsg.classList.add("nondisplay");
+                errorMsg.classList.remove("displayflex");
                 link.classList.remove("red-border");
                 return true;
             }
@@ -78,7 +87,7 @@ async function getShortenedUrl(url) {
 function addResult (link, shortLink) {
     URLContainer.appendChild(document.createElement("div"));
     const divArray = URLContainer.getElementsByTagName("div");
-    const curDiv = divArray[resultNum];
+    const curDiv = divArray[divArray.length-1];
     curDiv.classList.add("url-result");
     curDiv.appendChild(document.createElement("span"));
     curDiv.appendChild(document.createElement("span"));
@@ -87,7 +96,23 @@ function addResult (link, shortLink) {
     curDiv.getElementsByTagName("span")[1].classList.add("short-url");
     curDiv.getElementsByTagName("span")[1].textContent = shortLink;
     curDiv.appendChild(document.createElement("button"));
-    curDiv.querySelector("button").classList.add("btn-copy");
-    curDiv.querySelector("button").innerText = "Copy";
-    resultNum++;
+    const curBtn = curDiv.querySelector("button");
+    curBtn.classList.add("btn-copy");
+    curBtn.innerText = "Copy";
+    curBtn.addEventListener('click', () => {
+        const div = curBtn.parentElement;
+        const textArea = document.createElement('textarea');
+        textArea.value = div.getElementsByTagName("span")[1].innerText;
+        textArea.style.color="transparent";
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        curBtn.innerText = "Copied!";
+        curBtn.style.backgroundColor = "hsl(260, 8%, 14%)";
+        setTimeout(() => {
+            curBtn.innerText = "Copy";
+        curBtn.style.backgroundColor = "hsl(180, 66%, 49%)";
+        }, 2000);
+    })
 }

@@ -68,6 +68,77 @@ p {
   border-color: #f46262;
 }
 
+.burger-toggle .line1 {
+  -webkit-transform: rotate(-45deg) translate(-5px, 6px);
+          transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger-toggle .line2 {
+  opacity: 0;
+}
+
+.burger-toggle .line3 {
+  -webkit-transform: rotate(45deg) translate(-5px, -6px);
+          transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.mobile-nav {
+  position: absolute;
+  z-index: 10;
+  width: 90%;
+  left: 5%;
+  top: 0;
+  background-color: #3b3054;
+  border-radius: 12px;
+  height: 450px;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .mobile-nav {
+    visibility: hidden;
+  }
+}
+
+.mobile-nav hr {
+  width: 90%;
+  color: #bfbfbf;
+}
+
+.mobile-nav ul {
+  padding: 0;
+}
+
+.mobile-nav ul li {
+  padding: 20px 0;
+}
+
+.mobile-nav a {
+  font-family: inherit;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.mobile-nav .link-cyan {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.nondisplay {
+  display: none;
+}
+
+.displayflex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 header .top-bar {
   background: white;
   height: 120px;
@@ -169,6 +240,18 @@ header section {
   }
 }
 
+header section .container {
+  position: relative;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  pointer-events: none;
+}
+
 header section .hero-text {
   padding-top: 120px;
   max-width: 650px;
@@ -263,6 +346,9 @@ main .main-top .container form {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 }
 
@@ -340,6 +426,12 @@ main .main-top .container form .input-and-error em {
   color: #f46262;
 }
 
+@media (max-width: 900px) {
+  main .main-top .container form .input-and-error em {
+    font-size: 0.7rem;
+  }
+}
+
 main .main-top .container #short-url-container {
   margin-bottom: 100px;
   width: 100%;
@@ -383,6 +475,11 @@ main .main-top .container #short-url-container .url-result button {
   font-family: inherit;
   color: white;
   font-weight: bold;
+  cursor: pointer;
+}
+
+main .main-top .container #short-url-container .url-result button:hover {
+  background-color: #9ce3e2;
 }
 
 main .main-top .container section.container-small {

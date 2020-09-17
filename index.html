@@ -10,6 +10,7 @@
 </head>
 <body>
     <header>
+        <!--Top bar-->
         <div class="top-bar">
             <div class="container">
                 <img src="./images/logo.svg" class="logo" alt="Shortly logo">
@@ -24,6 +25,7 @@
                     <a href="#">Login</a>
                     <a href="#" class="link-cyan">Sign Up</a>
                 </div>
+                <!--Navigation burger-->
                 <div class="burger" id="burger">
                     <div class="line1"></div>
                     <div class="line2"></div>
@@ -31,8 +33,22 @@
                 </div>
             </div>
         </div>
+        <!--Hero section-->
         <section class="hero">
             <div class="container">
+                <!--Mobile navigation menu-->
+                <nav class="mobile-nav hide" id="nav-menu">
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                    <hr>
+                    <ul>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#" class="link-cyan">Sign up</a></li>
+                    </ul>
+                </nav>
                 <div class="hero-text">
                     <h1>More than just shorter links</h1>
                     <p>Build your brand's recognition and get detailed insights on how your links are performing.</p>
@@ -42,20 +58,24 @@
         </section>
     </header>
     <main>
+        <!--Top part of Main-->
         <div class="main-top">
             <div class="container">
+                <!--Form for submitting URLs-->
                 <form class="shorten-form" id="shorten-form">
                     <div class="input-and-error">
                         <input type="text" placeholder="Shorten a link here..." id="link">
-                        <em class="hide" id="error-msg">Please enter a valid email</em>
+                        <em class="nondisplay" id="error-msg">Please enter a valid email</em>
                     </div>
                     <button type="submit" id="btn-shorten">Shorten it!</button>
                 </form>
+                <!--Div where the results are posted-->
                 <div id="short-url-container"></div>
                 <section class="container-small">
                     <h2>Advanced Statistics</h2>
                     <p>Track how your links are performing across the web with our advanced statistics dashboard.</p>
                 </section>
+                <!--Advertisement cards-->
                 <div class="cards">
                     <section class="card">
                         <div class="icon">
@@ -81,6 +101,7 @@
                 </div>
             </div>
         </div>
+        <!--Bottom part of Main (Call to action)-->
         <div class="cta">
             <div class="container-small">
                 <h2>Boost your links today</h2>
