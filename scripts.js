@@ -2,12 +2,21 @@ const btn = document.getElementById('btn-shorten')
 const link = document.getElementById('link')
 const errorMsg = document.getElementById('error-msg')
 const form = document.getElementById('shorten-form')
+const URL_API = 'https://rel.ink/api/links/'
+const URLContainer = document.getElementById('short-url-container')
+var resultNum = 0
 
 //Eventlisteners
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    validateLink();
+    let linkText = link.value.trim();
+    if (validateLink(linkText)) {
+        const res = await getShortenedUrl(linkText);
+        const newURL = `https://rel.ink/${res.hashid}`;
+        addResult(res.url, newURL);
+        link.value = '';
+    };
 });
 
 //Functions
@@ -25,16 +34,17 @@ function is_url(str)
         }
 }
 
-function validateLink() {
-    let linkText = link.value.trim();
-    if (linkText === '') {
+
+//Validate link
+function validateLink(lnk) {
+    if (lnk === '') {
         errorMsg.textContent = "Please add a link";
         errorMsg.classList.remove("hide");
         link.classList.add("red-border");
         return false;
     }
     else {
-        if (!is_url(linkText))
+        if (!is_url(lnk))
             {
                 errorMsg.textContent = "Please add a valid link";
                 errorMsg.classList.remove("hide");
@@ -47,4 +57,37 @@ function validateLink() {
                 return true;
             }
     }
+}
+
+// POST URL
+async function getShortenedUrl(url) {
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    let body = JSON.stringify({ url: `${url}` });
+    let requestOptions = {
+      method: 'POST',
+      headers,
+      body
+    };
+    const response = await fetch(URL_API, requestOptions);
+    const data = await response.json();
+    return data;
+  }
+
+//Create div for result
+function addResult (link, shortLink) {
+    URLContainer.appendChild(document.createElement("div"));
+    const divArray = URLContainer.getElementsByTagName("div");
+    const curDiv = divArray[resultNum];
+    curDiv.classList.add("url-result");
+    curDiv.appendChild(document.createElement("span"));
+    curDiv.appendChild(document.createElement("span"));
+    curDiv.getElementsByTagName("span")[0].classList.add("full-url");
+    curDiv.getElementsByTagName("span")[0].textContent = link;
+    curDiv.getElementsByTagName("span")[1].classList.add("short-url");
+    curDiv.getElementsByTagName("span")[1].textContent = shortLink;
+    curDiv.appendChild(document.createElement("button"));
+    curDiv.querySelector("button").classList.add("btn-copy");
+    curDiv.querySelector("button").innerText = "Copy";
+    resultNum++;
 }
