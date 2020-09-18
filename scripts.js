@@ -6,8 +6,11 @@ const URL_API = 'https://rel.ink/api/links/'
 const URLContainer = document.getElementById('short-url-container')
 const burger = document.getElementById('burger');
 const navMenu = document.getElementById('nav-menu')
+const short_urls = 'short-urls'
 
 //Eventlisteners
+
+document.addEventListener('DOMContentLoaded', getLocal);
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -16,6 +19,7 @@ form.addEventListener('submit', async (e) => {
         const res = await getShortenedUrl(linkText);
         const newURL = `https://rel.ink/${res.hashid}`;
         addResult(res.url, newURL);
+        addLocal(res.hashid, res.url);
         link.value = '';
     };
 });
@@ -115,4 +119,35 @@ function addResult (link, shortLink) {
         curBtn.style.backgroundColor = "hsl(180, 66%, 49%)";
         }, 2000);
     })
+}
+
+//Add to local storage
+
+function addLocal (hash, url) {
+    const cards = localStorage.getItem(short_urls);
+    if (cards) {
+        const urls = JSON.parse(cards);
+        const check = urls.find(({hashid}) => hashid === hash);
+        if (!check) {
+            urls.push({hashid: hash, url});
+            localStorage.setItem(short_urls, JSON.stringify(urls));
+        }
+    }
+    else {
+        const urls = [];
+        urls.push({hashid: hash, url});
+        localStorage.setItem(short_urls, JSON.stringify(urls));
+    }
+}
+
+//Get from local storage
+
+function getLocal () {
+    const cards = localStorage.getItem(short_urls);
+    if (cards) {
+        const urls = JSON.parse(cards);
+        urls.map(data => {
+            addResult(data.url, `https://rel.ink/${data.hashid}`);
+        })
+    }
 }
