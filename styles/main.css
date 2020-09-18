@@ -249,7 +249,6 @@ header section .container {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  pointer-events: none;
 }
 
 header section .hero-text {
@@ -319,6 +318,8 @@ main .main-top .container {
 }
 
 main .main-top .container form {
+  position: relative;
+  z-index: 2;
   background-color: #3b3054;
   background-image: url(/images/bg-shorten-desktop.svg);
   background-repeat: no-repeat;
